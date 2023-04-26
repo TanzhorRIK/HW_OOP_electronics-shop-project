@@ -1,4 +1,6 @@
 import csv
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -48,7 +50,7 @@ class Item:
     def instantiate_from_csv(cls):
         with open(r"../src/items.csv", encoding="windows-1251") as in_f:
             data = [i for i in csv.DictReader(in_f, delimiter=",")]
-        cls.all =[cls(i["name"], i["price"], i["quantity"]) for i in data]
+        cls.all = [cls(i["name"], i["price"], i["quantity"]) for i in data]
 
     @staticmethod
     def string_to_number(number):
