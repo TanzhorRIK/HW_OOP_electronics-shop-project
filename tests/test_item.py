@@ -30,3 +30,13 @@ def test_string_to_number():
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
+
+
+def test_str():
+    item = Item("Смартфон", 10000, 20)
+    assert str(item) == item.name
+
+
+def test_repr():
+    item = Item("Смартфон", 10000, 20)
+    assert repr(item) == "Item('Смартфон', 10000, 20)"
