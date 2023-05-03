@@ -23,15 +23,13 @@ class Phone(Item):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
 
     def __add__(self, other):
-        if (self.__class__.__name__ == "Phone" and
-                other.__class__.__name__ == "Item" or
+        if (isinstance(self, Phone) and isinstance(other, Item) or
                 self.__class__.__name__ == other.__class__.__name__ == "Phone"):
             return self.quantity + other.quantity
         raise TypeError("Складывать можно только классы Item и Phone")
 
     def __radd__(self, other):
-        if (self.__class__.__name__ == "Phone" and
-                other.__class__.__name__ == "Item" or
+        if (isinstance(self, Phone) and isinstance(other, Item) or
                 self.__class__.__name__ == other.__class__.__name__ == "Phone"):
             return self.quantity + other.quantity
         raise TypeError("Складывать можно только классы Item и Phone")
