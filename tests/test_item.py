@@ -47,6 +47,7 @@ def test_instantiate_from_csv_one():
         Item.instantiate_from_csv(path=r"")
     assert 'Отсутствует файл items.csv' in str(except_info.value)
 
+
 def test_instantiate_from_csv_two():
     with pytest.raises(InstantiateCSVError) as except_info:
         Item.instantiate_from_csv(path=r"../src/items.csv")
