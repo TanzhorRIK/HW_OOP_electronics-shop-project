@@ -1,5 +1,5 @@
 import pytest
-from src.item import Item
+from src.item import Item, InstantiateCSVError
 
 
 @pytest.fixture
@@ -40,3 +40,14 @@ def test_str():
 def test_repr():
     item = Item("Смартфон", 10000, 20)
     assert repr(item) == "Item('Смартфон', 10000, 20)"
+
+
+def test_instantiate_from_csv_one():
+    with pytest.raises(FileNotFoundError) as except_info:
+        Item.instantiate_from_csv(path=r"")
+    assert 'Отсутствует файл items.csv' in str(except_info.value)
+
+def test_instantiate_from_csv_two():
+    with pytest.raises(InstantiateCSVError) as except_info:
+        Item.instantiate_from_csv(path=r"../src/items.csv")
+    assert 'Файл items.csv поврежден' in str(except_info.value)
