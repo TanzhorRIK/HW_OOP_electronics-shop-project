@@ -71,10 +71,6 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls, path=r"../src/items.csv"):
-        """
-        Инициализирует экземпляры класса `Item` данными из файла _src/items.csv
-        """
-
         try:
             with open(path, newline='') as in_f:
                 reader = csv.DictReader(in_f, delimiter=",")
