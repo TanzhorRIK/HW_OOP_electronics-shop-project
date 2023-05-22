@@ -52,13 +52,6 @@ class Item:
         """
         self.price *= self.pay_rate
 
-    @classmethod
-    def instantiate_from_csv(cls, file=r"../src/items.csv"):
-        with open(file, encoding="windows-1251") as in_f:
-            cls.all = []
-            [cls(i["name"], i["price"], i["quantity"]) for i in
-             [i for i in csv.DictReader(in_f, delimiter=",")]]
-
     @staticmethod
     def string_to_number(number):
         return int(float(number))
